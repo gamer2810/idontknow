@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Events;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
@@ -9,7 +9,12 @@ public class Interactable : MonoBehaviour
     public KeyCode interactKey;
     public UnityEvent interactAction;
 
-    void Update(){
+    private void Start() {
+        isInRange = false;
+        interactKey = KeyCode.E;
+    }
+
+    private void Update() {
         if(isInRange){
             if(Input.GetKeyDown(interactKey)){
                 interactAction.Invoke();
@@ -18,13 +23,12 @@ public class Interactable : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.CompareTag("Player")){
+        if(other.CompareTag("Player")){
             isInRange = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.CompareTag("Player")){
+        if(other.CompareTag("Player")){
             isInRange = false;
         }
     }

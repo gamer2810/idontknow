@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RotaryHeart.Lib.SerializableDictionary;
+
+[System.Serializable]
+public class ItemContent : SerializableDictionaryBase<Item, int> { }
 
 public class Inventory: MonoBehaviour
 {
     [SerializeField]
-    private Dictionary<Item,int> content;
+    private ItemContent content;
     
     [SerializeField]
     private int capacity;
@@ -13,10 +17,14 @@ public class Inventory: MonoBehaviour
     [SerializeField]
     private int currentlyHold;
 
+
+
     private void Start() {
         if(content == null){
+            //to be load later
             currentlyHold = 0;
-            content = new Dictionary<Item, int>();
+            content = new ItemContent();
+            capacity = 10;
         } else currentlyHold = content.Count;
     } 
 

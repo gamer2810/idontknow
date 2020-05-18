@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName="New Item", menuName="Inventory/Item")]
+public enum ItemType
+{
+    Food,
+    Equipment,
+    Medical
+}
+
 public class Item: ScriptableObject
 {
     public new string name;
+    [TextArea(15,20)]
     public string description;
-    private Sprite icon;
+    public ItemType type;
+    public GameObject prefab;
 }
