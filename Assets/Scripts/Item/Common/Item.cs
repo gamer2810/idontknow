@@ -11,9 +11,11 @@ public enum ItemType
 
 public class Item: ScriptableObject
 {
+    public int id;
     public new string name;
     [TextArea(15,20)]
     public string description;
     public ItemType type;
     public GameObject prefab;
+    public int amount;
 }

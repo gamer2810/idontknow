@@ -8,16 +8,17 @@ public enum EquipmentType
     Armor,
 }
 
-public class Equipment : Item
+public class EquipmentObject : Item
 {
     public EquipmentType equipmentType;
+    public string slot;
     public ModifierDictionary modifiers;
 
     protected virtual void Awake() {
         this.type = ItemType.Equipment;
     }
 
-    public Equipment(){
+    public EquipmentObject(){
         modifiers = new ModifierDictionary();
     }
 }
